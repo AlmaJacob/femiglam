@@ -40,11 +40,11 @@ def register(req):
     if req.method=='POST':
         uname=req.POST['uname']
         email=req.POST['email']
-        pswd=req.POST['pswd']
+        password=req.POST['password']
 
         try:
             data=User.objects.create_user(first_name=uname,email=email,
-                                        username=email,password=pswd)
+                                        username=email,password=password)
             data.save()
         except:
             messages.warning(req, "Username or Email already exist")
