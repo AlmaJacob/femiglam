@@ -58,6 +58,10 @@ def register(req):
 def user_home(req):
     return render(req,'user/user_home.html')
 
+def about(req):
+    return render(req,'user/about.html')
+
+
 
 def shop_home(req):
     return render(req,'shop/shop_home.html')

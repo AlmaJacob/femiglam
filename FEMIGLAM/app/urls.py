@@ -18,4 +18,6 @@ urlpatterns = [
     # ------------USER-------------
     
     path('user_home',views.user_home),
+    path('about',views.about),
+
 ]
