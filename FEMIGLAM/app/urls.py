@@ -4,13 +4,14 @@ from . import views
 
 urlpatterns = [
     path('',views.shop_login),
+    path('logout',views.shop_logout),
     path('register',views.register),
 
-    # ------------shop-------------
+    # ------------SHOP-------------
     path('shop',views.shop_home),
     path('logout',views.shop_logout),
-    path('add_pro',views.add_pro),
-    path('view_booking',views.view_booking),
+    path('add',views.add_pro),
+    path('bookings',views.bookings),
 
 
 
