@@ -5,6 +5,10 @@ from .models import *
 import os
 from django.contrib.auth.models import User
 from django.conf import settings
+from django.shortcuts import render
+from django.http import HttpResponse
+
+
 
 # Create your views here.
 

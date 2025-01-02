@@ -1,164 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    {% load static %}
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Femiglam</title>
-    <link rel="stylesheet" href="{% static 'styles.css' %}">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-   <style>
-    body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    padding: 0;
-    background-color: #ffeaf2; /* Light pink background */
-    color: #5a204c; /* Deep pinkish-purple text */
+    {% load static %} 
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - Femiglam</title>
+  <link rel="stylesheet" href="{% static 'styles.css' %}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+     /* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ffe4e1;
+  margin: 0;
+  padding: 0;
+  color: #333;
 }
 
 header {
-    text-align: center;
-    padding: 1.5rem;
-    background-color: #ffc4d6; /* Soft pink background */
-    color: #9b2c6e; /* Dark pink text */
+  text-align: center;
+  background-color: #ff91af;
+  padding: 20px;
+  color: white;
 }
 
-header h1 {
-    font-size: 2.5rem;
-    margin: 0;
-}
-
-header p {
-    margin: 0.5rem 0 0;
-    font-size: 1.2rem;
-}
-
-.contact-section {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.contact-section h2 {
-    text-align: center;
-    margin-bottom: 1rem;
-    color: #c2185b; /* Strong pink color */
-}
-
-.contact-section p {
-    text-align: center;
-    margin-bottom: 1.5rem;
-    color: #6a1b56; /* Muted dark pink */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
 }
 
 .contact-form {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
+  background-color: white;
+  padding: 20px 40px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-width: 500px;
+  width: 100%;
 }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
+.contact-form h2 {
+  text-align: center;
+  color: #d8345f;
 }
 
-.form-group label {
-    margin-bottom: 0.5rem;
-    font-weight: bold;
-    color: #9b2c6e;
+.contact-form p {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #555;
 }
 
-.form-group input,
-.form-group textarea {
-    padding: 0.75rem;
-    border: 1px solid #f8cdd8; /* Light pink border */
-    border-radius: 5px;
-    font-size: 1rem;
-    background-color: #ffeaf2; /* Light pink background */
-    color: #5a204c;
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: bold;
+  color: #d8345f;
 }
 
-.form-group input::placeholder,
-.form-group textarea::placeholder {
-    color: #b85c8a; /* Placeholder text in pinkish shade */
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+input:focus, textarea:focus {
+  border-color: #d8345f;
+  outline: none;
 }
 
 button {
-    padding: 0.75rem;
-    background-color: #c2185b; /* Strong pink */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    font-size: 1rem;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease;
+  background-color: #d8345f;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  width: 100%;
+  font-size: 16px;
 }
 
 button:hover {
-    background-color: #9b2c6e; /* Darker pink hover */
-    transform: scale(1.05);
+  background-color: #ff6384;
 }
 
-.contact-info {
-    margin-top: 2rem;
-    text-align: center;
-    color: #6a1b56; /* Muted dark pink */
+#response {
+  margin-top: 10px;
+  text-align: center;
 }
 
-.contact-info h3 {
-    color: #c2185b;
-    margin-bottom: 1rem;
+.hidden {
+  display: none;
 }
 
-footer {
-    text-align: center;
-    padding: 1rem;
-    background-color: #ffc4d6; /* Soft pink */
-    color: #9b2c6e;
-}
-
-   </style> 
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Femiglam</h1>
-        <p>Your destination for skincare, haircare, and makeup</p>
-    </header>
-    <main>
-        <section class="contact-section">
-            <h2>Contact Us</h2>
-            <p>We're here to assist you with all your beauty needs. Feel free to reach out!</p>
-            
-            <form action="#" method="POST" class="contact-form">
-                <div class="form-group">
-                    <label for="name">Your Name</label>
-                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Your Email</label>
-                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Your Message</label>
-                    <textarea id="message" name="message" placeholder="Write your message here" rows="5" required></textarea>
-                </div>
-                <button type="submit">Send Message</button>
-            </form>
 
-            <div class="contact-info">
-                <h3>Get in Touch</h3>
-                <p><strong>Email:</strong> support@femiglam.com</p>
-                <p><strong>Phone:</strong> +1 (234) 567-890</p>
-                <p><strong>Address:</strong> 123 Glamour Street, Beauty City, USA</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Femiglam. All Rights Reserved.</p>
-    </footer>
+  <header>
+    <h1>Femiglam</h1>
+    <p>Your beauty, our passion!</p>
+  </header>
+  <main>
+    <section class="contact-form">
+      <h2>Contact Us</h2>
+      <p>We'd love to hear from you! Please fill out the form below.</p>
+      <form id="contactForm">
+        <label for="name">Full Name:</label>
+        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+        
+        <label for="message">Message:</label>
+        <textarea id="message" name="message" rows="5" placeholder="Type your message here" required></textarea>
+        
+        <button type="submit">Send Message</button>
+      </form>
+      <div id="response" class="hidden"></div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Femiglam. All Rights Reserved.</p>
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
