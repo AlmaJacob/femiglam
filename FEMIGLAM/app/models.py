@@ -12,7 +12,7 @@ class Product(models.Model):
     offer_price=models.IntegerField()
     brand=models.TextField()
     ingredients=models.TextField()
-    warranty=models.TextField()
+    expiry=models.TextField()
     stock=models.IntegerField()
     created_at=models.DateTimeField(auto_now_add=True)
     updated_at=models.DateTimeField(auto_now=True)
@@ -29,3 +29,9 @@ class Buy(models.Model):
     qty=models.IntegerField()
     price=models.IntegerField()
     date=models.DateField(auto_now_add=True)
+class Contact(models.Model):
+    name = models.TextField()
+    email = models.EmailField()
+    phone = models.CharField(max_length=15)
+    message = models.TextField()
+    

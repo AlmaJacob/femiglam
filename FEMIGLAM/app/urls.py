@@ -8,10 +8,13 @@ urlpatterns = [
     path('register',views.register),
 
     # ------------SHOP-------------
-    path('shop',views.shop_home),
+     path('shop',views.shop_home),
     path('logout',views.shop_logout),
-    path('add',views.add_pro),
-    path('bookings',views.bookings),
+    path('add_pro',views.add_pro),
+    path('delete_product/<pid>',views.delete_product),
+    path('edit_product/<pid>',views.edit_product),
+    path('view_booking',views.view_bookings),
+    path('cancel_order/<pid>',views.cancel_order),
 
 
 

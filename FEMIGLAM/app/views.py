@@ -58,59 +58,86 @@ def register(req):
         return render(req,'register.html')
     
 #-----------------ADMIN-------------------------------------------------
+
 def shop_home(req):
-       if 'shop' in req.session:
-              Products=Product.objects.all()
-              return render (req,'shop/shop_home.html',{'Product':Products})
-       else:
-              return redirect(shop_login)                                                                                                   
+    if 'shop' in req.session:
+        data=Product.objects.all()
+        return render(req,'shop/shop_home.html',{'product':data})
+    else:
+        return redirect(shop_login)
+
+def add_pro(req):
+    if 'shop' in req.session:
+        if req.method=='POST':
+            pid=req.POST['pid']
+            name=req.POST['name']
+            descriptions=req.POST['descriptions']
+            price=req.POST['price']
+            offer_price=req.POST['offer_price']
+            brand=req.POST['brand']
+            ingredients=req.POST['ingredients']
+            expiry=req.POST['expiry']
+            stock=req.POST['stock']
+            img=req.FILES['img']
+            product = Product(pid=pid,name=name,descriptions=descriptions,
+                price=price,offer_price=offer_price,brand=brand,ingredients=ingredients,expiry=expiry,
+                stock=stock,img=img)
+            product.save()  
+            return redirect(shop_home)
+        else:
+            return render(req,'shop/add_product.html')
+    else:
+        return redirect(shop_login)
+    
+            
+def edit_product(req,pid):
+    if req.method=='POST':
+        # pid=req.POST['pid']
+        name=req.POST['name']
+        descriptions=req.POST['descriptions']
+        price=req.POST['price']
+        offer_price=req.POST['offer_price']
+        brand=req.POST['brand']
+        ingredients=req.POST['ingredients']
+        expiry=req.POST['expiry']
+        stock=req.POST['stock']
+        img=req.FILES.get('img')
+        if img:
+            Product.objects.filter(pk=pid).update(pid=pid,name=name,descriptions=descriptions,
+                price=price,offer_price=offer_price,brand=brand,ingredients=ingredients,expiry=expiry,stock=stock)
+            data=Product.objects.get(pk=pid)
+            data.img=img
+            data.save()
+        else:
+            Product.objects.filter(pk=pid).update(pid=pid,name=name,descriptions=descriptions,
+                price=price,offer_price=offer_price,brand=brand,ingredients=ingredients,expiry=expiry,stock=stock)
+        return redirect(shop_home)
+    else:
+        data=Product.objects.get(pk=pid)
+        return render(req,'shop/edit.html',{'data':data})
+
+def delete_product(req,pid):
+    data=Product.objects.get(pk=pid)
+    file=data.img.url
+    file=file.split('/')[-1]
+    os.remove('media/'+file)
+    data.delete()
+    return redirect(shop_home)
 
 
-def add_product(req):
-       if req.method=='POST':
-              id=req.POST['pro_id']
-              name=req.POST['name']
-              price=req.POST['price']
-              offer_price=req.POST['offer_price']
-              file=req.FILES['img']
-              data=Product.objects.create(pro_id=id,name=name,price=price,offer_price=offer_price,img=file)
-              data.save()
-       return render(req,'shop/add_product.html')
+def view_bookings(req):
+    buy=Buy.objects.all()[::-1]
+    return render(req,'shop/view_bookings.html',{'buy':buy})
 
-def edit_pro(req,id):
-       pro=Product.objects.get(pk=id)
-       if req.method=='POST':
-              e_id=req.POST['pro_id']
-              name=req.POST['name']
-              price=req.POST['price']
-              offer_price=req.POST['offer_price']
-              file=req.FILES.get('img')
-              print(file)
-              if file:
-                     Product.objects.filter(pk=id).update(pro_id=e_id,name=name,price=price,offer_price=offer_price,img=file)
-              
-              else:
-                     Product.objects.filter(pk=id).update(pro_id=e_id,name=name,price=price,offer_price=offer_price)
-                     
-              return redirect(shop_home)
-       return render(req,'shop/edit_product.html',{'data':pro})
-
-def delete_pro(req,id):
-       data=Product.objects.get(pk=id)
-       url=data.img.url
-       url=url.split('/')[-1]
-       os.remove('media/'+url)
-       data.delete()
-       return redirect(shop_home) 
-
-def bookings(req):
-       bookings=Buy.objects.all()[::-1][:2]
-       print(bookings)
-       return render(req,'shop/bookings.html',{'data':bookings})
+def cancel_order(req,pid):
+    data =Buy.objects.get(pk=pid)
+    data.delete()
+    return redirect(view_bookings) 
 
 #------------------USER------------------------------------------------
 def user_home(req):
-    return render(req,'user/user_home.html')
+    data=Product.objects.all()
+    return render(req,'user/user_home.html',{'product':data})
 
 def about(req):
     return render(req,'user/about.html')
@@ -128,21 +155,17 @@ def add_pro(req):
         if req.method=='POST':
             pid=req.POST['pid']
             name=req.POST['name']
-            specifications=req.POST['specifications']
+            descriptions=req.POST['descriptions']
             price=req.POST['price']
             offer_price=req.POST['offer_price']
             brand=req.POST['brand']
-            color=req.POST['color']
-            highlights=req.POST['highlights']
-            warranty=req.POST['warranty']
-            services=req.POST['services']
+            ingredients=req.POST['ingredients']
+            expiry=req.POST['expiry']
             stock=req.POST['stock']
             img=req.FILES['img']
-            product = Product(pid=pid,name=name,specifications=specifications,
-                price=price,offer_price=offer_price,brand=brand,color=color,
-                highlights=highlights,warranty=warranty,services=services,
-                stock=stock,img=img
-                )
+            product = Product(pid=pid,name=name,descriptions=descriptions,
+                price=price,offer_price=offer_price,brand=brand,ingredients=ingredients,
+               expiry=expiry, stock=stock,img=img)
             product.save()  
             return redirect(shop_home)
         else:
