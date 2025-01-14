@@ -150,40 +150,64 @@ def blog(req):
 def shop_home(req):
     return render(req,'shop/shop_home.html')
 
-def add_pro(req):
-    if 'shop' in req.session:
-        if req.method=='POST':
-            pid=req.POST['pid']
-            name=req.POST['name']
-            descriptions=req.POST['descriptions']
-            price=req.POST['price']
-            offer_price=req.POST['offer_price']
-            brand=req.POST['brand']
-            ingredients=req.POST['ingredients']
-            expiry=req.POST['expiry']
-            stock=req.POST['stock']
-            img=req.FILES['img']
-            product = Product(pid=pid,name=name,descriptions=descriptions,
-                price=price,offer_price=offer_price,brand=brand,ingredients=ingredients,
-               expiry=expiry, stock=stock,img=img)
-            product.save()  
-            return redirect(shop_home)
-        else:
-            return render(req,'shop/add_product.html')
-    else:
-        return redirect(shop_login)
 
 def view_booking(req):
     return render(req,'shop/bookings.html')
 
 def add_to_cart(req,pid):
-          product=Product.objects.get(pk=pid)
-          print(product)
-          user=User.objects.get(username=req.session['user'])
-          print(user)
-          data=Cart.objects.create(user=user,product=product)
-          data.save()
-          return redirect(cart_display)
+    product=Product.objects.get(pk=pid)
+    user=User.objects.get(username=req.session['user'])
+    try:
+        cart=Cart.objects.get(user=user,product=product)
+        cart.qty+=1
+        cart.save()
+    except:
+        data=Cart.objects.create(product=product,user=user,qty=1)
+        data.save()
+    return redirect(view_cart)
+
+def qty_in(req,cid):
+    data=Cart.objects.get(pk=cid)
+    data.qty+=1
+    data.price= data.qty*data.product.offer_price
+    data.save()
+    return redirect(view_cart)
+
+def qty_dec(req,cid):
+    data=Cart.objects.get(pk=cid)
+    data.qty-=1
+    data.save()
+    print(data.qty)
+    if data.qty==0:
+        data.delete()
+    return redirect(view_cart)
+
+
+def cart_pro_buy(req,cid):
+    cart=Cart.objects.get(pk=cid)
+    product=cart.product
+    user=cart.user
+    qty=cart.qty
+    price=product.offer_price*qty
+    buy=Buy.objects.create(product=product,user=user,qty=qty,price=price)
+    buy.save()
+    return redirect(view_bookings)
+
+def pro_buy(req,pid):
+    product=Product.objects.get(pk=pid)
+    user=User.objects.get(username=req.session['user'])
+    qty=1
+    price=product.offer_price
+    buy=Buy.objects.create(product=product,user=user,qty=qty,price=price)
+    buy.save()
+    return redirect(view_bookings)
+
+
+
+def view_cart(req):
+    user=User.objects.get(username=req.session['user'])
+    data=Cart.objects.filter(user=user)
+    return render(req,'user/cart_display.html',{'cart':data})
 
 def cart_display(req):
         log_user=User.objects.get(username=req.session['user'])

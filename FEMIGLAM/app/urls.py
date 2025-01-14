@@ -26,10 +26,15 @@ urlpatterns = [
     path('blog',views.blog),
     path('contact',views.contact),
     path('view_pro/<id>',views.view_product),
+    path('view_cart',views.view_cart),
     path('add_to_cart/<pid>',views.add_to_cart),
     path('cart_disp',views.cart_display),
     path('delete_cart/<id>',views.delete_cart),
     path('buy_pro/<id>',views.buy_pro),
     path('view_bookings',views.user_view_booking),
+    path('qty_in/<cid>',views.qty_in),
+    path('qty_dec/<cid>',views.qty_dec),
+    path('cart_pro_buy/<cid>',views.cart_pro_buy),
+    path('pro_buy/<pid>',views.pro_buy),
 
 ]
