@@ -71,10 +71,10 @@
             <label for="name" class="form-label">Product Name</label>
             <input type="text" id="name" name="name" class="form-control" placeholder="Enter Product Name" value="{{data.name}}" required>
         </div>
-        <div class="col-12">
-            <label for="specifications" class="form-label">Specifications</label>
-            <textarea id="specifications" name="specifications" class="form-control" rows="3" placeholder="Enter Specifications" required>{{data.specifications}}</textarea>
-        </div>
+        <div class="col-md-6">
+          <label for="descriptions" class="form-label">Product descriptions</label>
+          <input type="text" id="name" name="descriptions" class="form-control" placeholder="Enter Product descriptions" value="{{data.descriptions}}" required>
+      </div>
         <div class="col-md-6">
             <label for="price" class="form-label">Price</label>
             <input type="number" id="price" name="price" class="form-control" placeholder="Enter Price" value="{{data.price}}" required>
@@ -93,7 +93,7 @@
       </div>
         <div class="col-md-6">
             <label for="expiry" class="form-label">Expiry</label>
-            <textarea id="expiry" name="expiry" class="form-control" rows="2" placeholder="Enter expiry"  value="{{data.expiry}}"required>
+            <textarea id="expiry" name="expiry" class="form-control" rows="2" placeholder="Enter expiry"  value="{{data.expiry}}"required></textarea>
         </div>
         <div class="col-md-6">
             <label for="stock" class="form-label">Stock</label>

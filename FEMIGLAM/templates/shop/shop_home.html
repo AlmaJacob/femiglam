@@ -95,7 +95,7 @@
 
     <div class="container">
         <div class="row"> 
-            {% for pro in Product %}
+            {% for pro in product %}
             <div class="col-lg-4">
                 <div class="card" >
                   <img class="card-img-top" src="{{pro.img.url}}" alt="Card image" style="width:100%" height="400px">
@@ -104,7 +104,7 @@
                     <p class="card-text">{{pro.price}}</p>
                     <p class="card-text">{{pro.offer_price}}</p>
                     <a href="edit/{{pro.pk}}" class="btn btn-primary">Edit</a>
-                    <a href="delete/{{pro.pk}}" class="btn btn-primary">Delete</a>
+                    <a href="delete_product/{{pro.pk}}" class="btn btn-primary">Delete</a>
                   </div>
                 </div>
         </div>

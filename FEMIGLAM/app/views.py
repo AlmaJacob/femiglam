@@ -62,6 +62,7 @@ def register(req):
 def shop_home(req):
     if 'shop' in req.session:
         data=Product.objects.all()
+        print (data)
         return render(req,'shop/shop_home.html',{'product':data})
     else:
         return redirect(shop_login)
@@ -146,10 +147,6 @@ def contact(req):
     return render(req,'user/contact.html')
 def blog(req):
     return render(req,'user/blog.html')
-
-def shop_home(req):
-    return render(req,'shop/shop_home.html')
-
 
 def view_booking(req):
     return render(req,'shop/bookings.html')
