@@ -31,10 +31,11 @@ urlpatterns = [
     path('cart_disp',views.cart_display),
     path('delete_cart/<id>',views.delete_cart),
     path('buy_pro/<id>',views.buy_pro),
-    path('view_bookings',views.user_view_booking),
+    path('bookings',views.bookings),
     path('qty_in/<cid>',views.qty_in),
     path('qty_dec/<cid>',views.qty_dec),
     path('cart_pro_buy/<cid>',views.cart_pro_buy),
     path('pro_buy/<pid>',views.pro_buy),
+    path('checkout/<pid>',views.cart_display),
 
 ]

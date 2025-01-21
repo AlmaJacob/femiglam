@@ -9,28 +9,60 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: white;
+            background-color: #f8d0d6; /* Light pinkish background */
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.85);
+            background-color: rgba(255, 182, 193, 0.85); /* Light pinkish background */
             padding: 30px;
             border-radius: 10px;
             box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
         }
-        
+
         .btn-primary {
-            background-color: #000000;
+            background-color: #ffb6c1; /* Light pinkish color */
             border-color: #007bff;
         }
+
         .btn-primary:hover {
-            background-color: #5e61be;
+            background-color: #ff99b3; /* Lighter pink on hover */
             border-color: #0056b3;
+        }
+
+        .navbar {
+            background: linear-gradient(180deg, #ff80a1, #ffb6c1); /* Light pink gradient navbar */
+        }
+
+        .navbar-brand img {
+            width: 100px;
+            height: 55px;
+        }
+
+        .form-label {
+            color: #ff66b2; /* Light pink label color */
+        }
+
+        .form-control {
+            background-color: #ffe6f0; /* Light pinkish input fields */
+            border: 1px solid #ff99b3; /* Pink border */
+        }
+
+        .form-control:focus {
+            background-color: #fff0f5; /* Slightly lighter pink focus */
+            border-color: #ff66b2; /* Darker pink border on focus */
+        }
+
+        .nav-link {
+            color: #efecee; /* Light pink link color */
+        }
+
+        .nav-link:hover {
+            color: #f4f3f3; /* Slightly darker pink on hover */
         }
     </style>
 </head>
 <body>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top" style="background: linear-gradient(180deg, #0b0c3b, #4c49a0);position:relative">
+  <nav class="navbar navbar-expand-sm navbar-dark fixed-top">
     <div class="container-fluid">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
         <span class="navbar-toggler-icon"></span>
@@ -39,29 +71,16 @@
         <ul class="navbar-nav">
           <li class="nav-item">
             <a class="navbar-brand" href="">
-              <img src="{% static 'img/era_logo.png' %}" alt="" style="width: 100px;height: 55px;">
+             FEMIGLAM
             </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="shop">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="add_pro">Add Product</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="view_booking">View Bookings</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="logout">Logout</a>
-            </li>    
+          </li>   
         </ul>
       </div>
     </div>
-    </div>
   </nav>
   <div class="container mt-5">
-    <h2 class="text-center mb-4">Edit Product</h2>
-    <form method="post" action="" enctype="multipart/form-data" class="row g-3" >
+    <h2 class="text-center mb-4" style="color: aliceblue;">Edit Product</h2>
+    <form method="post" action="" enctype="multipart/form-data" class="row g-3">
         {% csrf_token %}
         <div class="col-md-6">
             <label for="pid" class="form-label">Product ID</label>
@@ -72,9 +91,9 @@
             <input type="text" id="name" name="name" class="form-control" placeholder="Enter Product Name" value="{{data.name}}" required>
         </div>
         <div class="col-md-6">
-          <label for="descriptions" class="form-label">Product descriptions</label>
-          <input type="text" id="name" name="descriptions" class="form-control" placeholder="Enter Product descriptions" value="{{data.descriptions}}" required>
-      </div>
+            <label for="descriptions" class="form-label">Product descriptions</label>
+            <input type="text" id="name" name="descriptions" class="form-control" placeholder="Enter Product descriptions" value="{{data.descriptions}}" required>
+        </div>
         <div class="col-md-6">
             <label for="price" class="form-label">Price</label>
             <input type="number" id="price" name="price" class="form-control" placeholder="Enter Price" value="{{data.price}}" required>
@@ -88,12 +107,12 @@
             <input type="text" id="brand" name="brand" class="form-control" placeholder="Enter Brand" value="{{data.brand}}" required>
         </div>
         <div class="col-md-6">
-          <label for="ingredients" class="form-label">Ingredients</label>
-          <input type="text" id="ingredients" name="ingredients" class="form-control" placeholder="Enter ingredients" value="{{data.ingredients}}" required>
-      </div>
+            <label for="ingredients" class="form-label">Ingredients</label>
+            <input type="text" id="ingredients" name="ingredients" class="form-control" placeholder="Enter ingredients" value="{{data.ingredients}}" required>
+        </div>
         <div class="col-md-6">
             <label for="expiry" class="form-label">Expiry</label>
-            <textarea id="expiry" name="expiry" class="form-control" rows="2" placeholder="Enter expiry"  value="{{data.expiry}}"required></textarea>
+            <textarea id="expiry" name="expiry" class="form-control" rows="2" placeholder="Enter expiry"  value="{{data.expiry}}" required></textarea>
         </div>
         <div class="col-md-6">
             <label for="stock" class="form-label">Stock</label>
@@ -111,4 +130,5 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-</html> 
+</html>
+ 

@@ -9,415 +9,267 @@
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <style>
         .nav-links .dropdown {
-    position: relative;
-  }
-  
-  .nav-links .dropdown-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #fff;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    list-style: none;
-    padding: 10px 0;
-  }
-  
-  .nav-links .dropdown-menu li {
-    padding: 5px 20px;
-  }
-  
-  .nav-links .dropdown-menu li a {
-    text-decoration: none;
-    color: #333;
-    font-size: 14px;
-  }
-  
-  .nav-links .dropdown:hover .dropdown-menu {
-    display: block;
-  }
-  
-  /* Search Bar */
-  .search-bar {
-    padding: 5px 10px;
-    border: 1px solid #ddd;
-    border-radius: 20px;
-    margin-right: 10px;
-  }
-  
-  /* Wishlist and User Icons */
-  .icons img {
-    width: 24px;
-    margin-left: 10px;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
-  
-  .icons img:hover {
-    transform: scale(1.1);
-  }
-  
-      /* General Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Header/Navbar Styles */
-  header {
-    background-color: #ffb6c1; /* Light pink background */
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  /* Navbar container */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 50px;
-  }
-  
-  /* Logo */
-  .logo {
-    font-size: 24px;
-    font-weight: bold;
-    color: #fff;
-    letter-spacing: 1px;
-    cursor: pointer;
-  }
-  
-  /* Navigation links */
-  .nav-links {
-    list-style: none;
-    display: flex;
-  }
-  
-  .nav-links li {
-    margin-left: 20px;
-  }
-  
-  .nav-links a {
-    text-decoration: none;
-    color: #fff;
-    font-weight: 500;
-    transition: color 0.3s ease;
-  }
-  
-  .nav-links a:hover {
-    color: #ff69b4; /* Hot pink hover effect */
-  }
-  
-  /* Icons */
-  .icons {
-    display: flex;
-    gap: 15px;
-  }
-  
-  .icons img {
-    width: 25px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
-  }
-  
-  .icons img:hover {
-    transform: scale(1.1);
-  }
-  
-  /* General Reset */
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Arial', sans-serif;
-  }
-  
-  /* Navbar Styling */
-  .navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: #ffdde1; /* Light Pink */
-    padding: 10px 50px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-  
-  .logo h1 {
-    color: #e91e63; /* Pink */
-    font-size: 1.8rem;
-    font-weight: bold;
-  }
-  
-  .logo span {
-    color: #b0003a; /* Dark Pink */
-  }
-  
-  .nav-links ul {
-    display: flex;
-    list-style: none;
-  }
-  
-  .nav-links ul li {
-    margin: 0 15px;
-  }
-  
-  .nav-links ul li a {
-    text-decoration: none;
-    color: #333;
-    transition: color 0.3s;
-  }
-  
-  .nav-links ul li a:hover {
-    color: #e91e63;
-  }
-  
-  .icons img {
-    width: 24px;
-    margin-left: 15px;
-  }
-  
-  /* Hero Section */
-  .hero {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 40px 80px;
-    background: #fff0f3; /* Light Pinkish Background */
-  }
-  
-  .hero-content {
-    flex: 1;
-  }
-  
-  .hero-content h2 {
-    font-size: 2.8rem;
-    color: #333;
-  }
-  
-  .hero-content p {
-    margin: 10px 0;
-    font-size: 1.1rem;
-    color: #555;
-  }
-  
-  .shop-btn {
-    display: inline-block;
-    margin-top: 15px;
-    padding: 10px 20px;
-    background-color: #e91e63;
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    border-radius: 25px;
-    transition: background 0.3s;
-  }
-  
-  .shop-btn:hover {
-    background-color: #b0003a;
-  }
-  
-  .hero-image img {
-    width: 100%;
-    max-width: 500px;
-    border-radius: 10px;
-  }
-  
-  /* Featured Products */
-  .featured-products {
-    text-align: center;
-    padding: 50px;
-    background: #fff;
-  }
-  
-  .featured-products h2 {
-    font-size: 2rem;
-    color: #e91e63;
-    margin-bottom: 20px;
-  }
-  
-  .products-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-  }
-  
-  .product-card {
-    background: #fff0f3;
-    padding: 20px;
-    border-radius: 10px;
-    text-align: center;
-    transition: transform 0.3s;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-  
-  .product-card img {
-    width: 100px;
-    height: 100px;
-  }
-  
-  .product-card h3 {
-    margin: 10px 0;
-    font-size: 1.2rem;
-    color: #333;
-  }
-  
-  .product-card p {
-    color: #b0003a;
-    font-weight: bold;
-  }
-  
-  .product-card:hover {
-    transform: translateY(-5px);
-  }
-  
-  
-    /* Pinkish Theme Styles */
-    .featured-products {
-          background-color: #fce4ec; /* Light pink background */
-          padding: 40px 0;
-      }
-  
-      .featured-products h2 {
-          font-size: 2.5rem;
-          color: #e91e63; /* Pink text */
-          font-weight: bold;
-          margin-bottom: 30px;
-      }
-  
-      .product-card {
-          transition: all 0.3s ease;
-          border-radius: 12px;
-          overflow: hidden;
-      }
-  
-      .product-card:hover {
-          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
-          transform: translateY(-10px);
-      }
-  
-      .card-img-top {
-          width: 100%;
-          height: 300px; /* Fixed height */
-          object-fit: cover;
-          border-radius: 12px 12px 0 0; /* Rounded top corners */
-      }
-  
-      .card-body {
-          background-color: #fff;
-          padding: 20px;
-          text-align: center;
-      }
-  
-      .card-title {
-          color: #333;
-          font-size: 1.2rem;
-          font-weight: bold;
-      }
-  
-      .card-text {
-          color: #777;
-      }
-  
-      .text-danger {
-          font-size: 1.5rem;
-          color: #e05f8a; /* Pink color for the offer price */
-          font-weight: bold;
-      }
-  
-      .text-muted {
-          text-decoration: line-through;
-          font-size: 1rem;
-      }
-  
-      .card-footer {
-          background-color: transparent;
-          border-top: none;
-          padding: 10px 0;
-      }
-  
-      .btn {
-          font-size: 0.9rem; /* Smaller button font size */
-          border-radius: 20px; /* Slightly rounded button corners */
-          padding: 8px 15px; /* Smaller padding */
-          text-transform: uppercase;
-          font-weight: bold;
-      }
-  
-      .btn-success {
-          background-color: #265c28; /* Green color */
-          border: none;
-      }
-  
-      .btn-success:hover {
-          background-color: #28422a;
-      }
-  
-      .btn-primary {
-          background-color: #dd5885; /* Pink color */
-          border: none;
-      }
-  
-      .btn-primary:hover {
-          background-color: #e080a3;
-      }
-  
-      .products-container {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 30px;
-          justify-content: center;
-      }
-  
-      .col-sm-12, .col-md-6, .col-lg-4 {
-          max-width: 350px;
-          margin-bottom: 20px;
-      }
-  
-      .col-sm-12 a {
-          text-decoration: none;
-      }
-  
+            position: relative;
+        }
+
+        .nav-links .dropdown-menu {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background-color: #fff;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            padding: 10px 0;
+        }
+
+        .nav-links .dropdown-menu li {
+            padding: 5px 20px;
+        }
+
+        .nav-links .dropdown-menu li a {
+            text-decoration: none;
+            color: #333;
+            font-size: 14px;
+        }
+
+        .nav-links .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+
+        /* Search Bar */
+        .search-bar {
+            padding: 5px 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px;
+            margin-right: 10px;
+        }
+
+        /* Wishlist and User Icons */
+        .icons img {
+            width: 24px;
+            margin-left: 10px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .icons img:hover {
+            transform: scale(1.1);
+        }
+
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header/Navbar Styles */
+        header {
+            background-color: #ffb6c1; /* Light pink background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Navbar container */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 50px;
+        }
+
+        /* Logo */
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #fff;
+            letter-spacing: 1px;
+            cursor: pointer;
+        }
+
+        /* Navigation links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 20px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ff69b4; /* Hot pink hover effect */
+        }
+
+        /* Icons */
+        .icons {
+            display: flex;
+            gap: 15px;
+        }
+
+        .icons img {
+            width: 25px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .icons img:hover {
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 80px;
+            background: #fff0f3; /* Light Pinkish Background */
+        }
+
+        .hero-content {
+            flex: 1;
+        }
+
+        .hero-content h2 {
+            font-size: 2.8rem;
+            color: #333;
+        }
+
+        .hero-content p {
+            margin: 10px 0;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: #e91e63;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: background 0.3s;
+        }
+
+        .shop-btn:hover {
+            background-color: #b0003a;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        /* Featured Products */
+        .featured-products {
+            text-align: center;
+            padding: 50px;
+            background: #fff;
+        }
+
+        .featured-products h2 {
+            font-size: 2rem;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+
+        .products-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .product-card {
+            background: #fff0f3;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-card img {
+            width: 100px;
+            height: 100px;
+        }
+
+        .product-card h3 {
+            margin: 10px 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        .product-card p {
+            color: #b0003a;
+            font-weight: bold;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Cart Summary */
+        .cart-summary {
+            padding: 20px;
+            background-color: #fff0f3;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .cart-summary p {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .cart-summary h3 {
+            font-size: 1.5rem;
+            color: #e91e63;
+        }
+        
     </style>
-    
+
 </head>
 <body>
     <!-- Navbar -->
     <header>
         <nav class="navbar">
-          <div class="logo">
-            Femiglam
-          </div>
-          <ul class="nav-links">
-            <li><a href="user_home">Home</a></li>
-
-            <li><a href="about">About</a></li>
-            <li><a href="blog">Blog</a></li>
-            <li><a href="contact">Contact</a></li>
-          </ul>
-          <div class="icons">
-            <input type="text" class="search-bar" placeholder="Search...">
-            <!-- <a href="#"><img src="media/icons8-search-30 (1).png" alt="Search"></a> -->
-            <a href="cart_disp"><img src="media/icons8-shopping-cart-32.png" alt="Cart"></a>
-         
-             <a class="nav-link " id="login" href="logout" style="color: white;"><i class="fa-solid fa-user" style="color: white;">&nbsp;&nbsp;</i>Logout</a>
-         
-          </div>
+            <div class="logo">
+                Femiglam
+            </div>
+            <ul class="nav-links">
+                <li><a href="user_home">Home</a></li>
+                <li><a href="about">About</a></li>
+                <li><a href="blog">Blog</a></li>
+                <li><a href="contact">Contact</a></li>
+            </ul>
+            <div class="icons">
+                <input type="text" class="search-bar" placeholder="Search...">
+                <a href="cart_disp"><img src="media/icons8-shopping-cart-32.png" alt="Cart"></a>
+                <a class="nav-link" id="login" href="logout" style="color: white;"><i class="fa-solid fa-user" style="color: white;">&nbsp;&nbsp;</i>Logout</a>
+            </div>
         </nav>
-      </header>
-      
+    </header>
 
-      <div class="container py-5">
+    <!-- Cart Items -->
+    <div class="container py-5">
         <div class="row g-4 align-items-center">
             {% for i in cart %}
             <div class="col-lg-6 col-md-12">
                 <div class="cart-item d-flex align-items-center">
-
                     <div class="cart-item-image">
                         <img src="{{ i.product.img.url }}" alt="{{ i.product.name }}" class="img-fluid" style="max-height: 200px; object-fit: cover;">
                     </div>
@@ -435,11 +287,21 @@
             </div>
             {% endfor %}
         </div>
+
+        <!-- Cart Summary -->
+        <div class="cart-summary">
+            <h3>Cart Summary</h3>
+            <p>Total Items: {{ cart|length }}</p>
+            <p>Total Price: ₹{{ total_price }}</p>
+            <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
+        </div>
+
+        <!-- Clear Cart Button -->
         <div class="d-flex justify-content-end mb-3">
             <a href="../clear_cart" class="btn btn-danger">Clear Cart</a>
         </div>
     </div>
-    
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
