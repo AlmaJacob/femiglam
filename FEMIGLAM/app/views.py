@@ -458,16 +458,6 @@ def user_view_booking(req):
     data = Buy.objects.filter(user=user)
     return render(req, 'user/view_bookings.html', {'data': data})
 
-
-def view_product(req, id):
-    log_user = User.objects.get(username=req.session['user'])
-    product = Product.objects.get(pk=id)
-    try:
-        cart = Cart.objects.get(product=product, user=log_user)
-    except:
-        cart = None
-    return render(req, 'user/view_pro.html', {'product': product, 'Cart': cart})
-
 def delete_cart(req,id):
        data=Cart.objects.get(pk=id)
        data.delete()
