@@ -36,6 +36,8 @@ urlpatterns = [
     path('qty_dec/<cid>',views.qty_dec),
     path('cart_pro_buy/<cid>',views.cart_pro_buy),
     path('pro_buy/<pid>',views.pro_buy),
+    path('clear_cart',views.clear_cart),
     path('checkout/<pid>',views.cart_display),
+    path('shop_now',views.shop_now),
 
 ]

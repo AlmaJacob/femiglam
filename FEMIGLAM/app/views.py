@@ -143,6 +143,10 @@ def user_home(req):
 def about(req):
     return render(req,'user/about.html')
 
+def shop_now(req):
+    data=Product.objects.all()
+    return render(req,'user/shop_now.html',{'product':data})
+
 def contact(req):
     return render(req,'user/contact.html')
 def blog(req):
@@ -402,15 +406,15 @@ def qty_dec(req, cid):
     return redirect(view_cart)
 
 
-def cart_pro_buy(req, cid):
-    cart = Cart.objects.get(pk=cid)
-    product = cart.product
-    user = cart.user
-    qty = cart.qty
-    price = product.offer_price * qty
-    buy = Buy.objects.create(product=product, user=user, qty=qty, price=price)
-    buy.save()
-    return redirect(view_bookings)
+# def cart_pro_buy(req, cid):
+#     cart = Cart.objects.get(pk=cid)
+#     product = cart.product
+#     user = cart.user
+#     qty = cart.qty
+#     price = product.offer_price * qty
+#     buy = Buy.objects.create(product=product, user=user, qty=qty, price=price)
+#     buy.save()
+#     return redirect(view_bookings)
 
 
 def pro_buy(req, pid):
@@ -450,7 +454,7 @@ def buy_pro(req, id):
     qty = 1
     data = Buy.objects.create(user=user, product=product, qty=qty, price=price)
     data.save()
-    return redirect(user_home)
+    return redirect(view_bookings)
 
 
 def user_view_booking(req):
@@ -483,3 +487,9 @@ def view_product(req,id):
        except:
               Cart=None       
        return render(req,'user/view_pro.html',{'product':product,'Cart':Cart})
+
+
+def clear_cart(req):
+    data=Cart.objects.all()
+    data.delete()
+    return redirect(view_cart)

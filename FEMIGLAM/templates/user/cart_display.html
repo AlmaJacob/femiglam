@@ -73,44 +73,180 @@
             top: 0;
             z-index: 1000;
         }
-
-        /* Navbar container */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 50px;
-        }
-
-        /* Logo */
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #fff;
-            letter-spacing: 1px;
-            cursor: pointer;
-        }
-
-        /* Navigation links */
-        .nav-links {
-            list-style: none;
-            display: flex;
-        }
-
-        .nav-links li {
-            margin-left: 20px;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #fff;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-
-        .nav-links a:hover {
-            color: #ff69b4; /* Hot pink hover effect */
-        }
+        .nav-links .dropdown {
+    position: relative;
+  }
+  
+  .nav-links .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+  }
+  
+  .nav-links .dropdown-menu li {
+    padding: 5px 20px;
+  }
+  
+  .nav-links .dropdown-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+  
+  /* Wishlist and User Icons */
+  .icons img {
+    width: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .icons img:hover {
+    transform: scale(1.1);
+  }
+  
+      /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header/Navbar Styles */
+  header {
+    background-color: #ffb6c1; /* Light pink background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Navbar container */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  
+  /* Navigation links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #ff69b4; /* Hot pink hover effect */
+  }
+  
+  /* Icons */
+  .icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .icons img {
+    width: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .icons img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffdde1; /* Light Pink */
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo h1 {
+    color: #e91e63; /* Pink */
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .logo span {
+    color: #b0003a; /* Dark Pink */
+  }
+  
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav-links ul li {
+    margin: 0 15px;
+  }
+  
+  .nav-links ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .nav-links ul li a:hover {
+    color: #e91e63;
+  }
+  
+  .icons img {
+    width: 24px;
+    margin-left: 15px;
+  }
+  
 
         /* Icons */
         .icons {
@@ -239,6 +375,22 @@
             font-size: 1.5rem;
             color: #e91e63;
         }
+         /* Footer */
+         footer {
+            background-color: #d63384;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: white;
+        }
         
     </style>
 
@@ -247,23 +399,26 @@
     <!-- Navbar -->
     <header>
         <nav class="navbar">
-            <div class="logo">
-                Femiglam
-            </div>
-            <ul class="nav-links">
-                <li><a href="user_home">Home</a></li>
-                <li><a href="about">About</a></li>
-                <li><a href="blog">Blog</a></li>
-                <li><a href="contact">Contact</a></li>
-            </ul>
-            <div class="icons">
-                <input type="text" class="search-bar" placeholder="Search...">
-                <a href="cart_disp"><img src="media/icons8-shopping-cart-32.png" alt="Cart"></a>
-                <a class="nav-link" id="login" href="logout" style="color: white;"><i class="fa-solid fa-user" style="color: white;">&nbsp;&nbsp;</i>Logout</a>
-            </div>
+          <div class="logo">
+            Femiglam
+          </div>
+          <ul class="nav-links">
+            <li><a href="user_home">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="blog">Blog</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li><a href="bookings">bookings</a></li>
+          </ul>
+          <div class="icons">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <!-- <a href="#"><img src="media/icons8-search-30 (1).png" alt="Search"></a> -->
+            <a href="view_cart"><img src="media/icons8-shopping-cart-32.png" alt="Cart"></a>
+         
+             <a class="nav-link " id="login" href="logout" style="color: white;"><i class="fa-solid fa-user" style="color: white;">&nbsp;&nbsp;</i>Logout</a>
+         
+          </div>
         </nav>
-    </header>
-
+      </header>
     <!-- Cart Items -->
     <div class="container py-5">
         <div class="row g-4 align-items-center">
@@ -293,14 +448,15 @@
             <h3>Cart Summary</h3>
             <p>Total Items: {{ cart|length }}</p>
             <p>Total Price: ₹{{ total_price }}</p>
-            <a href="checkout" class="btn btn-primary">Proceed to Checkout</a>
-        </div>
-
+            <a href="../checkout" class="btn btn-primary">Proceed to Checkout</a>
+     
         <!-- Clear Cart Button -->
         <div class="d-flex justify-content-end mb-3">
             <a href="../clear_cart" class="btn btn-danger">Clear Cart</a>
         </div>
     </div>
+</div>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

@@ -25,20 +25,180 @@ body {
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
         background-color: #ffc0cb; /* Blush pink header */
     }
-    .navbar {
-        background-color: #ffb6c1; /* Different pink shade for the navbar */
-    }
-    .navbar-brand {
-        font-weight: bold;
-        color: #800020; /* Dark reddish-pink */
-    }
-    .nav-link {
-        color: #fff; /* White text for navbar links */
-    }
-    .nav-link:hover {
-        color: #ff69b4; /* Rose pink on hover */
-    }
-        .row.flex-nowrap {
+    .nav-links .dropdown {
+    position: relative;
+  }
+  
+  .nav-links .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    list-style: none;
+    padding: 10px 0;
+  }
+  
+  .nav-links .dropdown-menu li {
+    padding: 5px 20px;
+  }
+  
+  .nav-links .dropdown-menu li a {
+    text-decoration: none;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .nav-links .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  
+  /* Search Bar */
+  .search-bar {
+    padding: 5px 10px;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+  
+  /* Wishlist and User Icons */
+  .icons img {
+    width: 24px;
+    margin-left: 10px;
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+  
+  .icons img:hover {
+    transform: scale(1.1);
+  }
+  
+      /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+  }
+  
+  /* Header/Navbar Styles */
+  header {
+    background-color: #ffb6c1; /* Light pink background */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  /* Navbar container */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 50px;
+  }
+  
+  /* Logo */
+  .logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #fff;
+    letter-spacing: 1px;
+    cursor: pointer;
+  }
+  
+  /* Navigation links */
+  .nav-links {
+    list-style: none;
+    display: flex;
+  }
+  
+  .nav-links li {
+    margin-left: 20px;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    color: #ff69b4; /* Hot pink hover effect */
+  }
+  
+  /* Icons */
+  .icons {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .icons img {
+    width: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  
+  .icons img:hover {
+    transform: scale(1.1);
+  }
+  
+  /* General Reset */
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* Navbar Styling */
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffdde1; /* Light Pink */
+    padding: 10px 50px;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+  }
+  
+  .logo h1 {
+    color: #e91e63; /* Pink */
+    font-size: 1.8rem;
+    font-weight: bold;
+  }
+  
+  .logo span {
+    color: #b0003a; /* Dark Pink */
+  }
+  
+  .nav-links ul {
+    display: flex;
+    list-style: none;
+  }
+  
+  .nav-links ul li {
+    margin: 0 15px;
+  }
+  
+  .nav-links ul li a {
+    text-decoration: none;
+    color: #333;
+    transition: color 0.3s;
+  }
+  
+  .nav-links ul li a:hover {
+    color: #e91e63;
+  }
+  
+  .icons img {
+    width: 24px;
+    margin-left: 15px;
+  }
+     .row.flex-nowrap {
             display: flex;
             flex-wrap: nowrap;
             gap: 15px; /* Space between cards */
@@ -90,43 +250,29 @@ body {
     </style>
 </head>
 <body>
-    <!-- SVG Icon Definitions -->
-    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
-        <symbol id="cart-outline" viewBox="0 0 24 24">
-          <path d="M7 4h13l-1.35 6.72A4 4 0 0115 14H8a4 4 0 01-4-4l1-6h2zm13 0H8l-1 6a2 2 0 002 2h7a2 2 0 002-2L20 4z" />
-        </symbol>
-        <symbol id="quality" viewBox="0 0 24 24">
-          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.27 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z" />
-        </symbol>
-        <symbol id="price-tag" viewBox="0 0 24 24">
-          <path d="M7 2a2 2 0 00-2 2v10l7 7 9-9-7-7H7zm0 2h4l7 7-7 7-7-7V4z" />
-        </symbol>
-        <symbol id="shield-plus" viewBox="0 0 24 24">
-          <path d="M12 2a6 6 0 016 6v7a6 6 0 01-5.12 5.95L12 22l-0.88-1.05A6 6 0 016 15V8a6 6 0 016-6zm0 2a4 4 0 00-4 4v7a4 4 0 003.35 3.95L12 20l0.65-0.05A4 4 0 0016 15V8a4 4 0 00-4-4zm-1 7h2v2h-2v2h-2v-2H7v-2h2v-2h2v2z" />
-        </symbol>
-    </svg>
 
-    <!-- Header Section -->
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Femiglam</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="user_home">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog">Blogs</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about">about</a></li>
-                    <li class="nav-item"><a class="nav-link" href="view_cart">Cart</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact">Contact</a></li>
-                    <li class="nav-item"><a class="nav-link" href="bookings">Booking</a></li>
-                    <li class="nav-item"><a class="nav-link" href="logout">Logout</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    
+    <header>
+        <nav class="navbar">
+          <div class="logo">
+            Femiglam
+          </div>
+          <ul class="nav-links">
+            <li><a href="user_home">Home</a></li>
+            <li><a href="about">About</a></li>
+            <li><a href="blog">Blog</a></li>
+            <li><a href="contact">Contact</a></li>
+            <li><a href="bookings">bookings</a></li>
+          </ul>
+          <div class="icons">
+            <input type="text" class="search-bar" placeholder="Search...">
+            <!-- <a href="#"><img src="media/icons8-search-30 (1).png" alt="Search"></a> -->
+            <a href="view_cart"><img src="media/icons8-shopping-cart-32.png" alt="Cart"></a>
+         
+             <a class="nav-link " id="login" href="logout" style="color: white;"><i class="fa-solid fa-user" style="color: white;">&nbsp;&nbsp;</i>Logout</a>
+         
+          </div>
+        </nav>
+      </header>
     <!-- Main Content -->
     <div class="container mt-5">
         <div class="row mt-6" style="margin-top: 30px;">
