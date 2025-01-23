@@ -359,13 +359,25 @@ def user_home(req):
     return render(req, 'user/user_home.html', {'product': data})
 
 
-def about(req):
-    return render(req, 'user/about.html')
-
-
 def contact(req):
-    return render(req, 'user/contact.html')
-
+    if req.method == 'POST':
+        name = req.POST['name']
+        email = req.POST['email']
+        phone = req.POST['phone']
+        message = req.POST['message']
+        try:
+            data = Contact.objects.create(
+                name=name,
+                email=email,
+                phone=phone,
+                message=message
+            )
+            data.save()
+            return render(req, 'user/contact.html')
+        except Exception as e:
+            return render(req,'user/contact.html')
+    
+    return render(req,'user/contact.html')
 
 def blog(req):
     return render(req, 'user/blog.html')
@@ -424,7 +436,7 @@ def pro_buy(req, pid):
     price = product.offer_price
     buy = Buy.objects.create(product=product, user=user, qty=qty, price=price)
     buy.save()
-    return redirect(view_bookings)
+    return redirect(bookings)
 
 
 def view_cart(req):
