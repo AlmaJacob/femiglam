@@ -186,23 +186,33 @@
     color: #b0003a; /* Dark Pink */
   }
   
-  .nav-links ul {
-    display: flex;
+  .nav-links .dropdown {
+    position: relative;
+  }
+  
+  .nav-links .dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     list-style: none;
+    padding: 10px 0;
   }
   
-  .nav-links ul li {
-    margin: 0 15px;
+  .nav-links .dropdown-menu li {
+    padding: 5px 20px;
   }
   
-  .nav-links ul li a {
+  .nav-links .dropdown-menu li a {
     text-decoration: none;
     color: #333;
-    transition: color 0.3s;
+    font-size: 14px;
   }
   
-  .nav-links ul li a:hover {
-    color: #e91e63;
+  .nav-links .dropdown:hover .dropdown-menu {
+    display: block;
   }
   
   .icons img {
@@ -330,8 +340,6 @@
         <li><a href="bookings">bookings</a></li>
       </ul>
       <div class="icons">
-        <input type="text" class="search-bar" placeholder="Search...">
-        <!-- <a href="#"><img src="media/icons8-search-30 (1).png" alt="Search"></a> -->
         <a href="view_cart"><img src="media/icons8-shopping-cart-32.png" alt="Cart"></a>
      
          <a class="nav-link " id="login" href="logout" style="color: white;"><i class="fa-solid fa-user" style="color: white;">&nbsp;&nbsp;</i>Logout</a>
